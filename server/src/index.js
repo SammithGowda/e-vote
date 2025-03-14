@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 
-const authRoute = require("./router/signup")
+const authRoute = require("./router/signupAndlogin")
 
 app.use('/user',authRoute)
 
