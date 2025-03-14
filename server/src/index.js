@@ -11,6 +11,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 
+const authRoute = require("./router/signup")
+
+app.use('/user',authRoute)
+
 const erroHandler =(err,req,res,next)=>{
     res.status(err.status || 500).json({success:false,message:err.message||"Internal Server Error"})
 }
