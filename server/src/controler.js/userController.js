@@ -34,7 +34,6 @@ const login = async(req,res)=>{
 
         const payload ={userId:user._id,role:user.role,email:user.email}
         const token = generateToken(payload);
-        console.log(req.user)
         res.status(200).send({success:token})
     } catch (error) {
         console.log(error)

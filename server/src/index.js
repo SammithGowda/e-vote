@@ -12,7 +12,9 @@ app.use(express.urlencoded({extended:true}))
 
 
 const authRoute = require("./router/signupAndlogin")
-
+app.use("/",(req,res)=>{
+    res.status(200).send({success:"Wellcome to E-vote server"});
+})
 app.use('/user',authRoute)
 
 const erroHandler =(err,req,res,next)=>{
