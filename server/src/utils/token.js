@@ -11,7 +11,6 @@ const authenticateToken = async(req,res,next)=>{
     if(!token) return res.status(404).json({ msg: "Not Authorized Access denied"  });
     
     jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{
-        console.log(user,"in token")
         if(err)  return res.status(403).json({ msg: "Invalid or expired token"  });
         req.user = user
         next()

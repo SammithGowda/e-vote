@@ -12,10 +12,15 @@ app.use(express.urlencoded({extended:true}))
 
 
 const authRoute = require("./router/signupAndlogin")
+const profile = require("./router/profileRouter");
+const { authenticateToken } = require("./utils/token");
+
+
+app.use('/user',authRoute)
+app.use('/profile',authenticateToken,profile)
 app.use("/",(req,res)=>{
     res.status(200).send({success:"Wellcome to E-vote server"});
 })
-app.use('/user',authRoute)
 
 const erroHandler =(err,req,res,next)=>{
     res.status(err.status || 500).json({success:false,message:err.message||"Internal Server Error"})

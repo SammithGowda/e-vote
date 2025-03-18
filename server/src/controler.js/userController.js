@@ -22,7 +22,7 @@ const signup = async(req,res)=>{
 const login = async(req,res)=>{
     try {
         const {aadharCardNumber,password} = req.body;
-        if(!aadharCardNumber||!password) return res.status(400).json({error:"Missinf Fields are required"});
+        if(!aadharCardNumber||!password) return res.status(400).json({error:"Missing Fields are required aadharCardNumber and password"});
         
         const user = await User.findOne({aadharCardNumber});
         if (!user) {
